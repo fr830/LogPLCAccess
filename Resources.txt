@@ -1,0 +1,5 @@
+ulr a archivo
+https://stackoverflow.com/questions/307688/how-to-download-a-file-from-a-url-in-c
+https://stackoverflow.com/questions/525364/how-to-download-a-file-from-a-website-in-c-sharp
+workarround ssl
+https://stackoverflow.com/questions/4492735/webexception-could-not-establish-trust-relationship-for-the-ssl-tls-secure-chann
