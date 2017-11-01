@@ -1,5 +1,13 @@
 ulr a archivo
 https://stackoverflow.com/questions/307688/how-to-download-a-file-from-a-url-in-c
 https://stackoverflow.com/questions/525364/how-to-download-a-file-from-a-website-in-c-sharp
+
 workarround ssl
 https://stackoverflow.com/questions/4492735/webexception-could-not-establish-trust-relationship-for-the-ssl-tls-secure-chann
+
+OLEDB driver for
+HOW TO: FIX ERROR - "the 'microsoft.ace.oledb.12.0' provider is not registered on the local machine"
+https://social.msdn.microsoft.com/Forums/en-US/1d5c04c7-157f-4955-a14b-41d912d50a64/how-to-fix-error-the-microsoftaceoledb120-provider-is-not-registered-on-the-local-machine?forum=vstsdb
+
+CSV into Access DB
+https://stackoverflow.com/questions/19208603/insert-into-access-table-from-csv-file-via-c-sharp-code
