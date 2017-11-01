@@ -11,3 +11,5 @@ https://social.msdn.microsoft.com/Forums/en-US/1d5c04c7-157f-4955-a14b-41d912d50
 
 CSV into Access DB
 https://stackoverflow.com/questions/19208603/insert-into-access-table-from-csv-file-via-c-sharp-code
+
+https://stackoverflow.com/questions/21285568/csv-reading-using-oledb-command
