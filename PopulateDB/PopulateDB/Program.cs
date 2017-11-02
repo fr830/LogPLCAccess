@@ -19,11 +19,11 @@ namespace PopulateDB
             if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
             {
                 {
-                    //WebClient Client = new WebClient();
-                    //string url = "https://10.26.32.200/DataLog.html?FileName=temperaturacamaras.csv";
-                    //string destino = @"C:\LogPLC\temperaturacamaras.csv";
-                    //ServicePointManager.ServerCertificateValidationCallback = (senderX, certificate, chain, sslPolicyErrors) => { return true; };
-                    //Client.DownloadFile(url, destino);
+                    WebClient Client = new WebClient();
+                    string url = "https://10.26.32.200/DataLog.html?FileName=temperaturacamaras.csv";
+                    string destino = @"C:\LogPLC\temperaturacamaras.csv";
+                    ServicePointManager.ServerCertificateValidationCallback = (senderX, certificate, chain, sslPolicyErrors) => { return true; };
+                    Client.DownloadFile(url, destino);
 
 
 
@@ -34,12 +34,25 @@ namespace PopulateDB
 
                     var con = new OdbcConnection();
                     con.ConnectionString = myConnectionString;
-                    con.Open();
 
-                    using (var cmd = new OdbcCommand())
+
+                    var cmd = new OdbcCommand();
                     {
                         cmd.Connection = con;
                         cmd.CommandType = System.Data.CommandType.Text;
+
+                        con.Open();
+                        cmd.CommandText = @"SELECT TOP 1 * FROM Temperaturas ORDER BY Record DESC";
+                        String lastRecord = (String)cmd.ExecuteScalar();
+                        con.Close();
+
+                        con.Open();
+                        cmd.CommandText = @"SELECT * FROM [Text;FMT=Delimited;Database=C:\LogPLC].[temperaturacamaras.csv] AS csv " +
+                                          @"WHERE csv.Record > " + lastRecord + ";";
+                        int result = (int)cmd.ExecuteScalar();
+                        con.Close();
+
+                        con.Open();
                         cmd.CommandText =
                         @"INSERT INTO Temperaturas " +
                         @"SELECT * FROM [Text;FMT=Delimited;Database=C:\LogPLC].[temperaturacamaras.csv];";
@@ -48,7 +61,9 @@ namespace PopulateDB
                         cmd.ExecuteNonQuery();
                     }
                     con.Close();
-                    
+
+
+
 
 
                     //DataTable resultado = FromCSV(@"C:\LogPLC\temperaturacamaras.csv", ',');
